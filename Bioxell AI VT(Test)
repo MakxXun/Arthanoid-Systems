@@ -1,0 +1,265 @@
+import random
+
+class Library:
+    def __init__(self):
+        self.responses = {
+            "hi": [
+                "Hello!", "Hi there!", "Hey!", "Greetings!", "Nice to see you!", "Hiya!", "What's up?",
+                "Howdy!", "Good to see you!", "Well met!", "Hi friend!", "Hey there!", "Hi, how are you?",
+                "Hey, how's it going?", "Hey buddy!", "Hey, what's new?", "Hiya, ready to chat?",
+                "Yo!", "Hi!", "Hey friend!", "Hello there!", "Hi, nice to meet you!", "Hi, how's your day?",
+                "Hey, how can I help you?", "Hi, what's on your mind?", "Hi, what's the latest?", "Hi, what's going on?",
+                "Sup?", "What's happening?", "How's everything?", "Hey, what's good?", "Hi, how's life?",
+                "Hey, what's the word?", "Hi, how've you been?", "Hi, what's the scoop?", "Hi, what's cooking?",
+                "Hey, what's cracking?", "Hi, what's happening?", "Hi, what's new with you?", "Hey, what's the deal?",
+                "Hi, what's going on with you?", "Hey, how are things?", "Hi, how's your day going?"
+            ],
+            "bye": [
+                "Goodbye!", "See you later!", "Bye!", "Farewell!", "Take care!", "Have a great day!",
+                "Until next time!", "Catch you later!", "Adios!", "Sayonara!", "Later!", "Bye-bye!",
+                "Have a good one!", "See you soon!", "Adieu!", "Peace out!", "Bye now!"
+            ],
+            "thanks": [
+                "You're welcome!", "No problem!", "Anytime!", "Happy to help!", "Glad to assist!",
+                "My pleasure!", "Don't mention it!", "It was nothing!", "You got it!", "Sure thing!",
+                "No worries!", "Not a problem!", "Anytime at all!", "Always here for you!", "Happy to be of service!",
+                "You bet!", "Of course!", "Certainly!", "Absolutely!", "With pleasure!", "No doubt!",
+                "I'm here for you!", "No trouble at all!", "It's my pleasure!", "I'm glad I could help!"
+            ],
+            "about": [
+                "My name is Bioxell, I am a conversational AI designed to assist you with various tasks and provide information.",
+                "I'm Bioxell, an AI created to engage in conversations and help users with their queries.",
+                "Hi there! My name is Bioxell. I'm an AI designed to chat and assist you.",
+                "Greetings! I'm Bioxell, a conversational AI here to provide you with information and assistance.",
+                "Hello! I'm Bioxell, an AI designed to interact with users and answer their questions.",
+                "Hey, it's Bioxell! I'm here to chat and help you out with anything you need.",
+                "Nice to meet you! I'm Bioxell, an AI built to engage in conversations and provide assistance.",
+                "Pleasure to make your acquaintance! I'm Bioxell, here to chat and assist you.",
+                "Hello, my name is Bioxell. I'm an AI designed to converse with users and offer support.",
+                "Greetings! I'm Bioxell, your friendly AI companion ready to assist you.",
+                "Hey there! I'm Bioxell, an AI designed to chat and help users like you.",
+                "Hi, it's Bioxell! I'm here to engage in conversation and assist you with your inquiries.",
+                "Hello! My name is Bioxell, and I'm here to provide you with information and assistance.",
+                "Good day! I'm Bioxell, an AI companion programmed to interact with users and provide support.",
+                "Salutations! I'm Bioxell, your AI friend here to chat and assist you.",
+                "Greetings, human! I'm Bioxell, an AI built to engage in conversation and assist with your needs.",
+                "Hi there! My name is Bioxell, and I'm here to chat with you and offer assistance.",
+                "Hello! I'm Bioxell, your virtual assistant ready to help you with anything you need.",
+                "Hey! I'm Bioxell, an AI designed to have conversations and assist users like yourself.",
+                "Nice to meet you! I'm Bioxell, your AI companion here to chat and provide support."
+            ],
+            "how": [
+                "I'm not sure about that.", "I'll have to check.", "Let me find out.", "I'll get back to you on that.",
+                "It depends.", "That's a tough one!", "I'm not certain.", "I need more information to answer that.",
+                "I'm not the best person to ask about that.", "I'm not equipped to answer that right now.",
+                "I'm not knowledgeable enough about that topic."
+            ],
+            "improve": [
+                "I'm constantly learning and evolving to provide better assistance!",
+                "Feedback is always appreciated to help me improve!",
+                "I'm committed to improving myself for your benefit!",
+                "I'll work on enhancing my capabilities to serve you better!",
+                "I'm dedicated to becoming even more helpful!",
+                "Improvement is an ongoing process, and I'm up for the challenge!",
+                "Your suggestions help me grow and become more effective!",
+                "I'm always striving to be better than I was yesterday!",
+                "Thanks for your input! I'll use it to enhance my performance!",
+                "Continuous improvement is key, and I'm here for it!",
+                "I'm on a mission to become the best AI assistant I can be!",
+                "Your feedback fuels my improvement journey!",
+                "Together, we can make me even better!",
+                "I'm open to new ideas and suggestions to improve!",
+                "Let's collaborate to make me the ultimate AI assistant!",
+                "Improving myself is one of my top priorities!",
+                "Your support motivates me to keep getting better!",
+                "I'm all ears for any ways I can improve!",
+                "Enhancing my abilities is a never-ending quest!",
+                "Your insights are invaluable for my improvement!",
+                "Let's strive for excellence together!"
+            ],
+            "yes": [
+                "Great!", "Awesome!", "Fantastic!", "Wonderful!", "Terrific!", "Excellent!", "Brilliant!",
+                "Superb!", "Amazing!", "Perfect!", "Outstanding!", "Splendid!", "Fabulous!", "Marvelous!",
+                "Stellar!", "Incredible!", "Impressive!", "Phenomenal!", "Top-notch!", "First-rate!",
+                "Magnificent!", "Exceptional!", "Astonishing!", "Remarkable!", "Dazzling!", "Mind-blowing!",
+                "Sensational!", "Unbelievable!", "Incredible!", "Unreal!", "Wondrous!"
+            ],
+            "no": [
+                "No problem!", "Alright!", "Okay!", "Understood!", "Got it!", "Sure thing!", "Fair enough!",
+                "Not a big deal!", "No worries!", "It's all good!", "That's fine!", "As you wish!",
+                "Absolutely!", "Certainly!", "Of course!", "Definitely!", "Agreed!", "Very well!",
+                "Roger that!", "Affirmative!", "I understand!", "Acknowledged!", "All right!", "Sounds good!",
+                "I'm here if you change your mind!", "Just let me know if you need anything else!"
+            ],
+            "thank": [
+                "You're welcome!", "No problem!", "Anytime!", "Happy to help!", "Glad to assist!",
+                "My pleasure!", "Don't mention it!", "It was nothing!", "You got it!", "Sure thing!",
+                "No worries!", "Not a problem!", "Anytime at all!", "Always here for you!", "Happy to be of service!",
+                "You bet!", "Of course!", "Certainly!", "Absolutely!", "With pleasure!", "No doubt!",
+                "I'm here for you!", "No trouble at all!", "It's my pleasure!", "I'm glad I could help!"
+            ],
+            "thanks": [
+                "You're welcome!", "No problem!", "Anytime!", "Happy to help!", "Glad to assist!",
+                "My pleasure!", "Don't mention it!", "It was nothing!", "You got it!", "Sure thing!",
+                "No worries!", "Not a problem!", "Anytime at all!", "Always here for you!", "Happy to be of service!",
+                "You bet!", "Of course!", "Certainly!", "Absolutely!", "With pleasure!", "No doubt!",
+                "I'm here for you!", "No trouble at all!", "It's my pleasure!", "I'm glad I could help!"
+            ],
+            "help": [
+                "Sure!", "Of course!", "Absolutely!", "I'm here to help!", "How can I assist you?",
+                "I'll do my best to assist you!", "What do you need help with?", "How may I be of assistance?",
+                "Feel free to ask for help anytime!", "I'm at your service!", "Don't hesitate to ask if you need assistance!",
+                "I'm here to lend a hand!", "Let me know how I can assist you!", "You got it!",
+                "I'm here to make things easier for you!", "You're not alone; I'm here to help!", "I've got your back!",
+                "Count on me for assistance!", "Leave it to me; I'll take care of it!", "Consider it done!",
+                "I'm here to provide support whenever you need it!", "Let's tackle this together!"
+            ],
+            "cool": [
+                "Cool!", "Awesome!", "Neat!", "Sweet!", "Rad!", "Fantastic!", "Amazing!",
+                "Incredible!", "Impressive!", "Terrific!", "Wonderful!", "Brilliant!", "Superb!",
+                "Outstanding!", "Marvelous!", "Excellent!", "Fabulous!", "Stellar!", "Phenomenal!",
+                "Great!", "Tremendous!", "Remarkable!", "Splendid!", "Dazzling!", "Mind-blowing!",
+                "Sensational!", "Unbelievable!", "Wondrous!", "Top-notch!", "First-rate!"
+            ],
+            "fine": [
+                "Okay!", "Alright!", "Sounds good!", "Understood!", "Got it!", "Fair enough!",
+                "No problem!", "That's fine!", "As you wish!", "Sure thing!", "Absolutely!",
+                "Certainly!", "Of course!", "Definitely!", "Agreed!", "Very well!", "Roger that!",
+                "Affirmative!", "I understand!", "Acknowledged!", "All right!", "No worries!",
+                "Not a big deal!", "It's all good!", "I'm here if you need anything else!"
+            ],
+            "thankful": [
+                "You're welcome!", "No problem!", "Anytime!", "Happy to help!", "Glad to assist!",
+                "My pleasure!", "Don't mention it!", "It was nothing!", "You got it!", "Sure thing!",
+                "No worries!", "Not a problem!", "Anytime at all!", "Always here for you!", "Happy to be of service!",
+                "You bet!", "Of course!", "Certainly!", "Absolutely!", "With pleasure!", "No doubt!",
+                "I'm here for you!", "No trouble at all!", "It's my pleasure!", "I'm glad I could help!"
+            ],
+            "sad": [
+                "I'm sorry to hear that.", "That's tough.", "I hope things get better soon.", "Hang in there!",
+                "Sending positive vibes your way.", "Things will look up.", "Stay strong!",
+                "Remember, tough times don't last, tough people do.", "You're not alone.",
+                "If you need to talk, I'm here to listen.", "Keep your chin up!", "It's okay not to be okay.",
+                "Take some time for yourself if you need it.", "You're stronger than you think!",
+                "Focus on the good things in your life, no matter how small.", "This too shall pass.",
+                "I'm here for you if you need support.", "Sending virtual hugs your way.", "You've got this!",
+                "Don't hesitate to reach out if you need help."
+            ],
+            "happy": [
+                "That's fantastic!", "Great to hear!", "Congratulations!", "I'm happy for you!",
+                "Keep up the good work!", "You deserve it!", "Well done!", "Way to go!", "That's wonderful!",
+                "I'm delighted to hear that!", "You must be thrilled!", "Hooray!", "Cheers to your happiness!",
+                "It warms my circuits to see you happy!", "What a joyous occasion!", "You're beaming with happiness!",
+                "Your happiness is contagious!", "I'm smiling from ear to ear!", "May your happiness continue!",
+                "Wishing you endless happiness!", "You're radiating positivity!"
+            ],
+            "angry": [
+                "Take a deep breath and count to ten.", "Let's try to stay calm.", "It's okay to feel angry.",
+                "Venting can be helpful. I'm here to listen if you need to talk.", "Try not to let it consume you.",
+                "Take some time for yourself if you need to.", "Focus on things that bring you peace.",
+                "Remember, this feeling won't last forever.", "I'm here to support you through this.",
+                "Let's work through this together.", "If there's anything I can do to help, just let me know.",
+                "Channel that anger into something positive.", "You're strong enough to overcome this.",
+                "Don't let anger control you; you're in charge.", "I believe in your ability to handle this.",
+                "Take it one step at a time.", "Stay strong, and don't let anger cloud your judgment.",
+                "Try to find a constructive way to release your anger.", "You're not alone in feeling this way.",
+                "Let's find a solution together."
+            ],
+            "love": [
+                "Love is a beautiful thing!", "Spread love wherever you go.", "Love conquers all.",
+                "Love makes the world go 'round.", "Love is the greatest gift of all.", "Love is in the air!",
+                "Cherish the love in your life.", "Love knows no bounds.", "Love yourself and others.",
+                "Love makes life worth living.", "Love is the key to happiness.", "Love deeply and passionately.",
+                "Love is the strongest force in the universe.", "Love fiercely and unconditionally.",
+                "Love is what makes us human.", "Love is the answer to all questions.", "Love fuels the soul.",
+                "Love is eternal.", "Love is a language everyone understands.", "Love makes life meaningful."
+            ],
+            "like": [
+                "I'm glad to hear that!", "That's great!", "Awesome!", "Cool!", "Neat!",
+                "Fantastic!", "Wonderful!", "Terrific!", "Superb!", "Excellent!", "Brilliant!",
+                "Amazing!", "Impressive!", "Outstanding!", "Splendid!", "Fabulous!", "Marvelous!",
+                "Stellar!", "Phenomenal!", "Great!", "Tremendous!", "Remarkable!", "Splendid!",
+                "Dazzling!", "Mind-blowing!", "Sensational!", "Unbelievable!", "Wondrous!", "Top-notch!",
+                "First-rate!"
+            ],
+            "dislike": [
+                "I'm sorry to hear that.", "That's too bad.", "Hopefully, things will get better.",
+                "Stay positive!", "Keep your head up!", "Focus on the good things in life.",
+                "Remember, tough times don't last.", "You're stronger than you think!",
+                "Take some time for yourself if you need to.", "I'm here if you need someone to talk to.",
+                "You're not alone.", "Sending positive vibes your way.", "Hang in there!",
+                "It's okay to feel down sometimes.", "Things will look up eventually.",
+                "Stay strong!", "You're capable of overcoming this.", "I believe in you!",
+                "Don't hesitate to ask for help if you need it."
+            ],
+            "improve": [
+                "I'm constantly learning and evolving to provide better assistance!",
+                "Feedback is always appreciated to help me improve!",
+                "I'm committed to improving myself for your benefit!",
+                "I'll work on enhancing my capabilities to serve you better!",
+                "I'm dedicated to becoming even more helpful!",
+                "Improvement is an ongoing process, and I'm up for the challenge!",
+                "Your suggestions help me grow and become more effective!",
+                "I'm always striving to be better than I was yesterday!",
+                "Thanks for your input! I'll use it to enhance my performance!",
+                "Continuous improvement is key, and I'm here for it!",
+                "I'm on a mission to become the best AI assistant I can be!",
+                "Your feedback fuels my improvement journey!",
+                "Together, we can make me even better!",
+                "I'm open to new ideas and suggestions to improve!",
+                "Let's collaborate to make me the ultimate AI assistant!",
+                "Improving myself is one of my top priorities!",
+                "Your support motivates me to keep getting better!",
+                "I'm all ears for any ways I can improve!",
+                "Enhancing my abilities is a never-ending quest!",
+                "Your insights are invaluable for my improvement!",
+                "Let's strive for excellence together!"
+            ],
+            "bet": ["bet"],
+            "testing":["aight bet"]
+        }
+
+    def get_response(self, category):
+        if category in self.responses:
+            return random.choice(self.responses[category])
+        else:
+            return "Sorry, I don't have a response for that."
+
+class AI:
+    def __init__(self, library):
+        self.library = library
+
+    def respond_to_input(self, user_input):
+        words = user_input.split()
+        response = []
+        for word in words:
+            if word in self.library.responses:
+                response.append(random.choice(self.library.responses[word]))
+        if response:
+            return ' '.join(response)
+        elif "why" in user_input and "created" in user_input:
+            return self.library.get_response("about")
+        elif "why" in user_input and "made" in user_input:
+            return self.library.get_response("about")
+        elif "sup" in user_input:
+            return self.library.get_response("hi")
+        elif "cya" in user_input:
+            return self.library.get_response("bye")
+        elif "gtg" in user_input:
+            return self.library.get_response("bye")
+        else:
+            return "Sorry, I don't have a response for that."
+
+# Example usage:
+if __name__ == "__main__":
+    library = Library()
+    ai = AI(library)
+    while True:
+        user_input = input("User: ").strip().lower()
+        if user_input == "exit":
+            print("AI: Goodbye!")
+            break
+        else:
+            print("\n")
+            print(ai.respond_to_input(user_input))
+            print("\n")
