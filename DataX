@@ -219,3 +219,9 @@ class Library:
             "bet": ["bet"],
             "testing":["aight bet"]
         }
+
+       def get_response(self, category):
+          if category in self.responses:
+              return random.choice(self.responses[category])
+          else:
+              return "Sorry, I don't have a response for that."
