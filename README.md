@@ -1,7 +1,8 @@
 
 # BIOXELL-AI
-So looks like you have stumbled upon this wonderful repository where a few 13 year olds make a chatbot using AI. We are currently studying Secondary one, in School of Science and Technology, Singapore.
+So looks like you have stumbled upon this wonderful repository where a few 13 year olds make a chatbot using AI. We are currently studying Secondary one, in School of Science and Technology, Singapore. Our goal for this project is to understand and develop AI as part of our own initiative.
 
+_Shaping Future Innovators. The SST Way._
 
 
 ## Tech Stack
@@ -12,7 +13,9 @@ So looks like you have stumbled upon this wonderful repository where a few 13 ye
 
 ## Contributing
 
-not yet implemented
+3 Software Engineers,
+3 Computational Engineers,
+1 Hardware Engineer.
 
 ## Feedback
 
@@ -29,6 +32,23 @@ makxxun@gmail.com
 ## Authors
 
 - [@MakxXun](https://github.com/MakxXun)
+- [@Srinivas]
 - [@rgfsdg](https://github.com/rgfsdg)
 - [@abi1812](https://github.com/abi1812)
 
+
+
+
+
+
+
+
+
+
+|---   -------   ----   \-\  /-/   |-----  |        |
+|   |     |     |    |   \ \/ /    |       |        |
+|---      |     |    |   / /\ \    |-----  |        |
+|   |     |     |    |  / /  \ \   |       |        |
+|---   -------   ----  /-/    \-\  |-----  |------  |------
+
+_Where technology comes into play._
