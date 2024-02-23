@@ -14,7 +14,7 @@ class AI:
                 response.append(random.choice(self.library.responses[word]))
         if response:
             return ' '.join(response)
-        elif "why" in user_input and "created" in user_input:#this is predefined knowledge part 2
+        elif "why" in user_input and "created" in user_input:
             return self.library.get_response("about")
         elif "why" in user_input and "made" in user_input:
             return self.library.get_response("about")
@@ -23,26 +23,9 @@ class AI:
         elif "cya" in user_input:
             return self.library.get_response("bye")
         elif "gtg" in user_input:
-            return self.library.get_response("bye")#up till this point is positive starting on chat filter from now on
-        elif "fuck" in user_input:
-            return "Sorry, I can't reply this question as it has sensitive words in it"
-        elif "bitch" in user_input:
-            return "Sorry, I can't reply this question as it has sensitive words in it"
-        elif "nigger" in user_input:
-            return "Sorry, I can't reply this question as it has sensitive words in it"
-        elif "nigga" in user_input:
-            return "Sorry, I can't reply this question as it has sensitive words in it"
-        elif "asshole" in user_input:
-            return "Sorry, I can't reply this question as it has sensitive words in it"
-        elif "ass" in user_input:
-            return "Sorry, I can't reply this question as it has sensitive words in it"
-        elif "retard" in user_input:
-            return "Sorry, I can't reply this question as it has sensitive words in it"
-        elif "retarded" in user_input:
-            return "Sorry, I can't reply this question as it has sensitive words in it"
-            
+            return self.library.get_response("bye")
         else:
-            return "Sorry, I'm still learning what that means or how to do that."
+            return "Sorry, I don't have a response for that."
 
 # Example usage:
 if __name__ == "__main__":
