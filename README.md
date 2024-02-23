@@ -16,8 +16,10 @@ not yet implemented
 
 ## Feedback
 
-If you have any feedback, please reach out to us at srinivasengineer2011@gmail.com
-or makxxun@gmail.com
+If you have any feedback, please reach out to us at bioxell@email.com
+Alternatively contact the authors:
+srinivasengineer2011@gmail.com
+makxxun@gmail.com
 
 ## License
 
