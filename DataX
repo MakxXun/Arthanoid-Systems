@@ -1,8 +1,5 @@
 import random
 
-nsfwwords = ["fuck","bitch","nigger","nigga","asshole","ass","retard","retarded"]
-other_words = ["cya","gtg"]
-
 class Library:
     def __init__(self):
         self.responses = {
