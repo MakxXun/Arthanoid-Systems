@@ -1,5 +1,7 @@
 from DataX import *
 
+#Library is in DataX, so DataX is really crucial for this AI
+
 class AI:
     def __init__(self, library):
         self.library = library
@@ -11,8 +13,14 @@ class AI:
             if word in self.library.responses:
                 response.append(random.choice(self.library.responses[word]))
         if response:
-            return ' '.join(response)
-        elif "why" in user_input and "created" in user_input:
+        return ' '.join(response)
+        for i in nsfwwords:#checking for NSFW words
+            if i in user_input:
+                return "Sorry, I give a proper answer on this question or statement due to sensitive words."
+        for z in other_words:
+            if z in user_input:
+                return self.library.get_response("bye")
+        elif "why" in user_input and "created" in user_input:#this is predefined knowledge part 2
             return self.library.get_response("about")
         elif "why" in user_input and "made" in user_input:
             return self.library.get_response("about")
@@ -21,10 +29,10 @@ class AI:
         elif "cya" in user_input:
             return self.library.get_response("bye")
         elif "gtg" in user_input:
-            return self.library.get_response("bye")
+            return self.library.get_response("bye")#up till this point is positive starting on chat filter from now on
         else:
-            return "Sorry, I don't have a response for that."
-
+            return "Sorry, I'm still learning what that means or how to do that"
+        
 # Example usage:
 if __name__ == "__main__":
     library = Library()
@@ -32,7 +40,7 @@ if __name__ == "__main__":
     while True:
         user_input = input("User: ").strip().lower()
         if user_input == "exit":
-            print("AI: Goodbye!")
+            print("Goodbye!")
             break
         else:
             print("\n")
