@@ -32,7 +32,6 @@ makxxun@gmail.com
 ## Authors
 
 - [@MakxXun](https://github.com/MakxXun)
-- [@Srinivas]
 - [@rgfsdg](https://github.com/rgfsdg)
 - [@abi1812](https://github.com/abi1812)
 
