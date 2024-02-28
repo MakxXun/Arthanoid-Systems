@@ -20,10 +20,6 @@ class AI:
             return self.library.get_response("about")
         elif "sup" in user_input:
             return self.library.get_response("hi")
-        elif "cya" in user_input:
-            return self.library.get_response("bye")
-        elif "gtg" in user_input:
-            return self.library.get_response("bye")
         else:
             return "Sorry, I don't have a response for that."
 
@@ -34,9 +30,8 @@ if __name__ == "__main__":
     while True:
         user_input = input("User: ").strip().lower()
         if user_input == "exit":
-            print("Goodbye!")
+            print("AI: Goodbye!")
             break
         else:
-            print("\n")
-            print(ai.respond_to_input(user_input))
-            print("\n")
+            print("AI:", ai.respond_to_input(user_input))
+
