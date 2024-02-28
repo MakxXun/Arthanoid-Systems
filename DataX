@@ -1,5 +1,8 @@
 import random
 
+#Data X library for Bioxell AI
+#View official Github at https://github.com/MakxXun/Bioxell-AI
+
 class Library:
     def __init__(self):
         self.responses = {
@@ -216,10 +219,10 @@ class Library:
                 "Let's strive for excellence together!"
             ],
             "bet": ["bet"],
-            "testing":["aight bet"]
+            "testing":["add pydictionary using library. refer to revchatgpt"]
         }
-        def get_response(self, category):
-          if category in self.responses:
-              return random.choice(self.responses[category])
-          else:
-              return "Sorry, I don't have a response for that."
+    def get_response(self, category):
+        if category in self.responses:
+            return random.choice(self.responses[category])
+        else:
+            return "Sorry, I don't have a response for that."
