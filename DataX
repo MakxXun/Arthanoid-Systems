@@ -1,7 +1,9 @@
 import random
+import os
 
 #Data X library for Bioxell AI
 #View official Github at https://github.com/MakxXun/Bioxell-AI
+#stores predefined knowledge
 
 class Library:
     def __init__(self):
@@ -29,7 +31,7 @@ class Library:
                 "You bet!", "Of course!", "Certainly!", "Absolutely!", "With pleasure!", "No doubt!",
                 "I'm here for you!", "No trouble at all!", "It's my pleasure!", "I'm glad I could help!"
             ],
-            "about": [
+            "made": [
                 "My name is Bioxell, I am a conversational AI designed to assist you with various tasks and provide information.",
                 "I'm Bioxell, an AI created to engage in conversations and help users with their queries.",
                 "Hi there! My name is Bioxell. I'm an AI designed to chat and assist you.",
@@ -219,10 +221,15 @@ class Library:
                 "Let's strive for excellence together!"
             ],
             "bet": ["bet"],
-            "testing":["add pydictionary using library. refer to revchatgpt"]
+            "testing":["add pydictionary using library. refer to revchatgpt"],
+            "forest":["Did you know that there are many insects in forests such as ants and mosquitoes?",
+                      "Hiking in the forests will never get boring!",
+                      "The smell of wildlife is amazing!",
+                      "Join me in a hike in the forests!",
+                      "Don't forget to bring your insect repellents!"]
         }
     def get_response(self, category):
         if category in self.responses:
             return random.choice(self.responses[category])
-        else:
+        else:#system.getresponse
             return "Sorry, I don't have a response for that."
