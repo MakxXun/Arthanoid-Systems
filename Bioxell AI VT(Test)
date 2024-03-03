@@ -1,6 +1,7 @@
 from DataX import *
 
 #Library is in DataX, so DataX is really crucial for this AI
+#AI module with predefined knowledge
 
 class AI:
     def __init__(self, library):
@@ -15,11 +16,11 @@ class AI:
         if response:
             return ' '.join(response)
         elif "why" in user_input and "created" in user_input:
-            return self.library.get_response("about")
-        elif "why" in user_input and "made" in user_input:
-            return self.library.get_response("about")
-        elif "sup" in user_input:
+            return self.library.get_response("made")
+        elif "sup" in user_input: #custom word to link
             return self.library.get_response("hi")
+        elif "forests" in user_input:
+            return self.library.get_response("forest")
         else:
             return "Sorry, I don't have a response for that."
 
