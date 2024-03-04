@@ -1,5 +1,8 @@
 import random
 import os
+import datetime
+
+cntdt = datetime.date.today()
 
 #Data X library for Bioxell AI
 #View official Github at https://github.com/MakxXun/Bioxell-AI
@@ -8,7 +11,7 @@ import os
 class Library:
     def __init__(self):
         self.responses = {
-            "hi": [
+                "hi": [
                 "Hello!", "Hi there!", "Hey!", "Greetings!", "Nice to see you!", "Hiya!", "What's up?",
                 "Howdy!", "Good to see you!", "Well met!", "Hi friend!", "Hey there!", "Hi, how are you?",
                 "Hey, how's it going?", "Hey buddy!", "Hey, what's new?", "Hiya, ready to chat?",
@@ -226,10 +229,14 @@ class Library:
                       "Hiking in the forests will never get boring!",
                       "The smell of wildlife is amazing!",
                       "Join me in a hike in the forests!",
-                      "Don't forget to bring your insect repellents!"]
+                      "Don't forget to bring your insect repellents!"],
+            "day":[f"today is {cntdt}"],
+            "time": ["It's {:%H:%M %p} right now.".format(datetime.datetime.now()), 
+                     "The current time is {:%I:%M %p}.".format(datetime.datetime.now()), 
+                     "It's {:%I:%M %p}.".format(datetime.datetime.now())],
         }
     def get_response(self, category):
         if category in self.responses:
             return random.choice(self.responses[category])
         else:#system.getresponse
-            return "Sorry, I don't have a response for that."
+            return "Sorry, I'm still learning about this topic. Hope I can answer this question soon!"
