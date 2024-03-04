@@ -21,8 +21,10 @@ class AI:
             return self.library.get_response("hi")
         elif "forests" in user_input:
             return self.library.get_response("forest")
+        elif "what" and "today" in user_input:
+            return self.library.get_response("day")
         else:
-            return "Sorry, I don't have a response for that."
+            return "Sorry, I'm still learning about this topic. Hope I can answer this question soon!"
 
 # Example usage:
 if __name__ == "__main__":
