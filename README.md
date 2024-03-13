@@ -13,8 +13,8 @@ _Shaping Future Innovators. The SST Way._
 
 ## Contributing
 
-3 Software Engineers,
-3 Computational Engineers,
+2 Software Engineers,
+2 Computational Engineers,
 1 Hardware Engineer.
 
 ## Feedback
