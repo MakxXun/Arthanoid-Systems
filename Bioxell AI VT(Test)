@@ -1,13 +1,26 @@
 from DataX import *
 
+print("Arthanoid Version Test. Enter quit to stop the program")
+print("Most words require Wifi to search. Do note that if you ask questions to Arthanoid without wifi, Arthanoid might crash.")
 #Library is in DataX, so DataX is really crucial for this AI
 #AI module with predefined knowledge
+#Web searching capabilities
 
 class AI:
     def __init__(self, library):
         self.library = library
+    import requests
 
+    def search_google(self,query):
+        url = f"https://www.google.com/search?q={query}"
+        response = requests.get(url)
+        if response.status_code == 200:
+            print(response.text)
+            return response.text
+        else:
+            return None
     def respond_to_input(self, user_input):
+
         words = user_input.split()
         response = []
         for word in words:
@@ -23,8 +36,20 @@ class AI:
             return self.library.get_response("forest")
         elif "what" and "today" in user_input:
             return self.library.get_response("day")
+        elif "how" and "life" in user_input:
+            return self.library.get_response("hi")
+        elif "who" and "you" in user_input:
+            return self.library.get_response("made")
+        elif "cya" in user_input:
+            return self.library.get_response("bye")
+        elif "gtg" in user_input:
+            return self.library.get_response("bye")
+        elif "ok" in user_input:
+            return self.library.get_response("thanks")
         else:
-            return "Sorry, I'm still learning about this topic. Hope I can answer this question soon!"
+            query = ' '.join(user_input.split()[0:])#Fixed(Use indexing)
+            print(query)
+            self.search_google(query)
 
 # Example usage:
 if __name__ == "__main__":
@@ -32,8 +57,8 @@ if __name__ == "__main__":
     ai = AI(library)
     while True:
         user_input = input("User: ").strip().lower()
-        if user_input == "exit":
-            print("AI: Goodbye!")
+        if "quit" in user_input:
+            print("AI: Alright! See you next time! Quitting...")
             break
         else:
             print("AI:", ai.respond_to_input(user_input))
