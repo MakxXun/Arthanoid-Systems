@@ -41,7 +41,7 @@ def download_update(update_url):
         for chunk in response.iter_content(1024):
           f.write(chunk)
       print("Update downloaded successfully!")
-      install_update()
+      install_update(UPDATE_FILE)
       return True
     else:
       print(f"Failed to download update file. Status code: {response.status_code}")
@@ -49,7 +49,7 @@ def download_update(update_url):
     print(f"Error occurred while downloading update: {e}")
   return False
 
-def install_update(update_file_name="update.py"):
+def install_update(update_file_name):
 
     try:
         # Get the current script's path
