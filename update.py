@@ -1,6 +1,6 @@
 import requests
 import os
-CURRENT_VERSION = "V1.00.01X"
+CURRENT_VERSION = "V1.00.02X"
 UPDATE_URL = "https://raw.githubusercontent.com/MakxXun/Arthanoid-Systems/main/GeneralTestingV"
 UPDATE_FILE = "update.py"  # Downloaded update filename
 
