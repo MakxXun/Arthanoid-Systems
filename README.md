@@ -1,15 +1,7 @@
 
-# BIOXELL-AI
-So looks like you have stumbled upon this wonderful repository where a few 13 year olds make a chatbot using AI. We are currently studying Secondary one, in School of Science and Technology, Singapore(SST). Our goal for this project is to understand and develop AI as part of our own initiative.
+##Arthanoid-Systems
 
-_Shaping Future Innovators. The SST Way._
-
-
-## Tech Stack
-
-**Client:** Python
-
-**Server:** Raspberry pi 4B
+Hello! So this is our systems hosting page, where we host our scripts(still a work in progress) and details here. Please feel free to check around!
 
 ## Contributing
 
