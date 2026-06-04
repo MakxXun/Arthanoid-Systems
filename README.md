@@ -1,5 +1,5 @@
 
-##Arthanoid-Systems
+## Arthanoid-Systems
 
 Hello! So this is our systems hosting page, where we host our scripts(still a work in progress) and details here. Please feel free to check around!
 
